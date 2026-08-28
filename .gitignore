@@ -1,11 +1,9 @@
-# Pacotes de versão da Chrome Web Store
+# Pacotes de versão
 *.zip
 
-# Arquivos temporários de sistema operacional (Windows/Mac)
+# Arquivos temporários do Chrome
+_metadata/
+
+# Arquivos de sistema
 .DS_Store
 Thumbs.db
-Desktop.ini
-
-# Pastas de configuração de editores de código (opcional)
-.vscode/
-.idea/
