@@ -1,0 +1,24 @@
+{
+  "extName": { "message": "PicScreen - Referans ve Palet Çıkarıcı" },
+  "extDesc": {
+    "message": "Tek tıklamayla görsel referansları ve HEX paletlerini çıkarın."
+  },
+  "btnAnalyze": { "message": "Sayfayı Analiz Et" },
+  "btnDownload": { "message": "Tümünü İndir .ZIP" },
+  "footerText": { "message": "☕ Zaman kazandırdı mı? " },
+  "footerLink": { "message": "Bana bir kahve ısmarla!" },
+  "labelColors": { "message": "Renkler" },
+  "titleSitePalette": { "message": "Site Paleti (Tasarım)" },
+  "titleImagePalette": { "message": "Görüntü Paleti (Sanat)" },
+  "titleEyedropper": { "message": "Damlalık (Belirli Renk)" },
+  "btnEyedropper": { "message": "Renk Seç" },
+  "msgAnalyzing": { "message": "Analiz ediliyor... lütfen bekleyin" },
+  "msgLoading": { "message": "Referanslar yükleniyor... ⌛" },
+  "msgPackaging": { "message": "Paketleniyor... lütfen bekleyin" },
+  "msgCopied": { "message": "Kopyalandı!" },
+  "msgEmpty": { "message": "Boş" },
+  "msgDownloadSingle": { "message": "Bu resmi indir" },
+  "msgNoEyedropper": {
+    "message": "Tarayıcınız yerel Damlalık aracını desteklemiyor."
+  }
+}

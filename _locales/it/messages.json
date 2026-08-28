@@ -1,0 +1,24 @@
+{
+  "extName": { "message": "PicScreen - Estrattore di Rif. e Tavolozze" },
+  "extDesc": {
+    "message": "Estrai riferimenti visivi e tavolozze HEX con un clic."
+  },
+  "btnAnalyze": { "message": "Analizza Pagina" },
+  "btnDownload": { "message": "Scarica Tutto .ZIP" },
+  "footerText": { "message": "☕ Ti ha fatto risparmiare tempo? " },
+  "footerLink": { "message": "Offrimi un caffè!" },
+  "labelColors": { "message": "Colori" },
+  "titleSitePalette": { "message": "Tavolozza Sito (Design)" },
+  "titleImagePalette": { "message": "Tavolozza Immagini (Arte)" },
+  "titleEyedropper": { "message": "Contagocce (Colore Specifico)" },
+  "btnEyedropper": { "message": "Scegli Colore" },
+  "msgAnalyzing": { "message": "Analisi in corso... attendere" },
+  "msgLoading": { "message": "Caricamento riferimenti... ⌛" },
+  "msgPackaging": { "message": "Creazione pacchetto... attendere" },
+  "msgCopied": { "message": "Copiato!" },
+  "msgEmpty": { "message": "Vuoto" },
+  "msgDownloadSingle": { "message": "Scarica questa immagine" },
+  "msgNoEyedropper": {
+    "message": "Il tuo browser non supporta lo strumento Contagocce nativo."
+  }
+}

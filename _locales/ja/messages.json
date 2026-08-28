@@ -1,0 +1,24 @@
+{
+  "extName": { "message": "PicScreen - リファレンス＆パレット抽出" },
+  "extDesc": {
+    "message": "ワンクリックで視覚的リファレンスとHEXパレットを抽出します。"
+  },
+  "btnAnalyze": { "message": "ページを分析" },
+  "btnDownload": { "message": "すべてダウンロード .ZIP" },
+  "footerText": { "message": "☕ 時間の節約になりましたか？ " },
+  "footerLink": { "message": "コーヒーをおごる！" },
+  "labelColors": { "message": "色" },
+  "titleSitePalette": { "message": "サイトパレット (デザイン)" },
+  "titleImagePalette": { "message": "画像パレット (アート)" },
+  "titleEyedropper": { "message": "スポイト (特定の色)" },
+  "btnEyedropper": { "message": "色を取得" },
+  "msgAnalyzing": { "message": "分析中... お待ちください" },
+  "msgLoading": { "message": "リファレンスを読み込み中... ⌛" },
+  "msgPackaging": { "message": "パッケージ化中... お待ちください" },
+  "msgCopied": { "message": "コピーしました！" },
+  "msgEmpty": { "message": "空" },
+  "msgDownloadSingle": { "message": "この画像をダウンロード" },
+  "msgNoEyedropper": {
+    "message": "お使いのブラウザはネイティブのスポイトツールをサポートしていません。"
+  }
+}

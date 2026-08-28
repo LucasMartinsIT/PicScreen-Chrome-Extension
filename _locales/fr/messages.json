@@ -1,0 +1,24 @@
+{
+  "extName": { "message": "PicScreen - Extracteur de Réf & Palette" },
+  "extDesc": {
+    "message": "Extrayez des références visuelles et des palettes HEX en un clic."
+  },
+  "btnAnalyze": { "message": "Analyser la page" },
+  "btnDownload": { "message": "Tout télécharger .ZIP" },
+  "footerText": { "message": "☕ Vous avez gagné du temps ? " },
+  "footerLink": { "message": "Offrez-moi un café !" },
+  "labelColors": { "message": "Couleurs" },
+  "titleSitePalette": { "message": "Palette du site (Design)" },
+  "titleImagePalette": { "message": "Palette d'images (Art)" },
+  "titleEyedropper": { "message": "Pipette (Couleur spécifique)" },
+  "btnEyedropper": { "message": "Choisir la couleur" },
+  "msgAnalyzing": { "message": "Analyse en cours... veuillez patienter" },
+  "msgLoading": { "message": "Chargement des références... ⌛" },
+  "msgPackaging": { "message": "Création du fichier... veuillez patienter" },
+  "msgCopied": { "message": "Copié !" },
+  "msgEmpty": { "message": "Vide" },
+  "msgDownloadSingle": { "message": "Télécharger cette image" },
+  "msgNoEyedropper": {
+    "message": "Votre navigateur ne prend pas en charge l'outil Pipette natif."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "extName": { "message": "PicScreen - Extrator de Ref & Paleta" },
+  "extDesc": {
+    "message": "Extraia referências visuais e paletas HEX com um clique."
+  },
+  "btnAnalyze": { "message": "Analisar Página" },
+  "btnDownload": { "message": "Baixar Tudo em .ZIP" },
+  "footerText": { "message": "☕ Poupou seu tempo? " },
+  "footerLink": { "message": "Pague-me um café!" },
+  "labelColors": { "message": "Cores" },
+  "titleSitePalette": { "message": "Paleta do Site (Design)" },
+  "titleImagePalette": { "message": "Paleta das Imagens (Arte)" },
+  "titleEyedropper": { "message": "Conta-gotas (Cor Específica)" },
+  "btnEyedropper": { "message": "Pegar cor" },
+  "msgAnalyzing": { "message": "Analisando... aguarde" },
+  "msgLoading": { "message": "Carregando referências... ⌛" },
+  "msgPackaging": { "message": "Empacotando... aguarde" },
+  "msgCopied": { "message": "Copiado!" },
+  "msgEmpty": { "message": "Vazio" },
+  "msgDownloadSingle": { "message": "Baixar esta imagem" },
+  "msgNoEyedropper": {
+    "message": "Seu navegador não suporta a ferramenta de Conta-gotas nativa."
+  }
+}

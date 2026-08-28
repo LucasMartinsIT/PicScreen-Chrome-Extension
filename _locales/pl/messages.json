@@ -1,0 +1,24 @@
+{
+  "extName": { "message": "PicScreen - Ekstraktor Referencji i Palet" },
+  "extDesc": {
+    "message": "Pobieraj referencje wizualne i palety HEX jednym kliknięciem."
+  },
+  "btnAnalyze": { "message": "Analizuj stronę" },
+  "btnDownload": { "message": "Pobierz wszystko .ZIP" },
+  "footerText": { "message": "☕ Zaoszczędziło Twój czas? " },
+  "footerLink": { "message": "Postaw mi kawę!" },
+  "labelColors": { "message": "Kolory" },
+  "titleSitePalette": { "message": "Paleta Strony (Design)" },
+  "titleImagePalette": { "message": "Paleta Obrazów (Sztuka)" },
+  "titleEyedropper": { "message": "Kroplomierz (Konkretny kolor)" },
+  "btnEyedropper": { "message": "Wybierz kolor" },
+  "msgAnalyzing": { "message": "Analizowanie... proszę czekać" },
+  "msgLoading": { "message": "Ładowanie referencji... ⌛" },
+  "msgPackaging": { "message": "Pakowanie... proszę czekać" },
+  "msgCopied": { "message": "Skopiowano!" },
+  "msgEmpty": { "message": "Puste" },
+  "msgDownloadSingle": { "message": "Pobierz ten obraz" },
+  "msgNoEyedropper": {
+    "message": "Twoja przeglądarka nie obsługuje natywnego narzędzia Kroplomierz."
+  }
+}

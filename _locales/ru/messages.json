@@ -1,0 +1,24 @@
+{
+  "extName": { "message": "PicScreen - Извлечение референсов и палитр" },
+  "extDesc": {
+    "message": "Извлекайте визуальные референсы и HEX-палитры в один клик."
+  },
+  "btnAnalyze": { "message": "Анализировать страницу" },
+  "btnDownload": { "message": "Скачать всё .ZIP" },
+  "footerText": { "message": "☕ Сэкономило ваше время? " },
+  "footerLink": { "message": "Купите мне кофе!" },
+  "labelColors": { "message": "Цвета" },
+  "titleSitePalette": { "message": "Палитра сайта (Дизайн)" },
+  "titleImagePalette": { "message": "Палитра изображений (Арт)" },
+  "titleEyedropper": { "message": "Пипетка (Точный цвет)" },
+  "btnEyedropper": { "message": "Выбрать цвет" },
+  "msgAnalyzing": { "message": "Анализ... пожалуйста, подождите" },
+  "msgLoading": { "message": "Загрузка референсов... ⌛" },
+  "msgPackaging": { "message": "Упаковка... пожалуйста, подождите" },
+  "msgCopied": { "message": "Скопировано!" },
+  "msgEmpty": { "message": "Пусто" },
+  "msgDownloadSingle": { "message": "Скачать это изображение" },
+  "msgNoEyedropper": {
+    "message": "Ваш браузер не поддерживает встроенный инструмент Пипетка."
+  }
+}
