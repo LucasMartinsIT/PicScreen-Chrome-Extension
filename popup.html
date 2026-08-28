@@ -4,24 +4,40 @@
     <meta charset="UTF-8" />
     <title>PicScreen</title>
     <style>
-      /* Base & Reset */
+      /* Base layout: locked dimensions to prevent popup clipping */
       body {
         font-family: "Segoe UI", Tahoma, sans-serif;
         width: 340px;
         height: 550px;
-        overflow-y: auto;
-        padding: 15px;
         margin: 0;
         background-color: #222;
         color: #fff;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
       }
+
+      /* Scrollable content container */
+      .scroll-area {
+        flex: 1;
+        overflow-y: auto;
+        padding: 15px;
+      }
+
+      /* Fixed bottom footer container */
+      .bottom-fixed {
+        flex-shrink: 0;
+        background-color: #1a1a1a;
+        padding: 10px 15px;
+        border-top: 1px solid #333;
+      }
+
+      /* Component Styles */
       h2 {
         font-size: 16px;
         text-align: center;
         margin-top: 0;
       }
-
-      /* Layout & Controls */
       .top-controls {
         display: flex;
         gap: 10px;
@@ -63,8 +79,6 @@
         margin-bottom: 0;
         flex: 1;
       }
-
-      /* Collapsible Sections */
       .section-title {
         font-size: 12px;
         font-weight: bold;
@@ -83,8 +97,6 @@
       .collapsed {
         display: none !important;
       }
-
-      /* Color Palettes */
       .palette-container {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
@@ -110,8 +122,6 @@
         font-size: 9px;
         font-family: monospace;
       }
-
-      /* Image Gallery */
       .gallery {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -149,31 +159,26 @@
         border-color: #28a745;
       }
 
-      /* Pagination Controls */
+      /* Pagination and Footer */
       .pagination-controls {
         display: none;
         justify-content: space-between;
         align-items: center;
-        margin-top: 15px;
+        margin-bottom: 10px;
       }
       .pagination-controls button {
         width: 45%;
         margin-bottom: 0;
         background-color: #444;
+        padding: 6px;
       }
       .pagination-controls button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
       }
-
-      /* Footer */
       .footer {
-        margin-top: 20px;
         text-align: center;
         font-size: 12px;
-        border-top: 1px solid #444;
-        padding-top: 10px;
-        padding-bottom: 15px;
       }
       .footer a {
         color: #ffdd00;
@@ -183,88 +188,94 @@
     </style>
   </head>
   <body>
-    <h2>PicScreen 🎨</h2>
+    <!-- Scrollable Content Area -->
+    <div class="scroll-area">
+      <h2>PicScreen 🎨</h2>
 
-    <!-- Main Controls -->
-    <div class="top-controls">
-      <div class="input-group">
-        <label for="palette-limit" id="label-colors">Cores</label>
-        <input
-          type="number"
-          id="palette-limit"
-          value="10"
-          min="1"
-          max="100"
-          title="Quantidade de cores"
-        />
+      <!-- Main Controls -->
+      <div class="top-controls">
+        <div class="input-group">
+          <label for="palette-limit" id="label-colors">Cores</label>
+          <input
+            type="number"
+            id="palette-limit"
+            value="10"
+            min="1"
+            max="100"
+          />
+        </div>
+        <button id="btn-extract">Analisar Página</button>
       </div>
-      <button id="btn-extract">Analisar Página</button>
-    </div>
 
-    <button
-      id="btn-download"
-      style="background-color: #28a745; margin-bottom: 5px; display: none"
-    >
-      Baixar Tudo em .ZIP
-    </button>
-
-    <!-- Eyedropper Section -->
-    <div class="section-title" id="title-eyedropper">
-      Conta-gotas (Cor Específica)
-    </div>
-    <div style="display: flex; gap: 10px; margin-bottom: 15px">
       <button
-        id="btn-eyedropper"
-        style="background-color: #0078d7; margin: 0; flex: 2"
+        id="btn-download"
+        style="background-color: #28a745; margin-bottom: 5px; display: none"
       >
-        Pegar cor
+        Baixar Tudo em .ZIP
       </button>
+
+      <!-- Eyedropper Section -->
+      <div class="section-title" id="title-eyedropper">
+        Conta-gotas (Cor Específica)
+      </div>
+      <div style="display: flex; gap: 10px; margin-bottom: 15px">
+        <button
+          id="btn-eyedropper"
+          style="background-color: #0078d7; margin: 0; flex: 2"
+        >
+          Pegar cor
+        </button>
+        <div
+          id="eyedropper-result"
+          class="color-box"
+          style="
+            flex: 1;
+            margin: 0;
+            background-color: #444;
+            border: 1px dashed #777;
+          "
+        >
+          <span>Vazio</span>
+        </div>
+      </div>
+
+      <!-- Site Palette -->
+      <div class="section-title" id="toggle-site-palette">
+        <span id="title-site-palette">Paleta do Site (Design)</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div id="site-palette-container" class="palette-container"></div>
+
+      <!-- Image Palette -->
+      <div class="section-title" id="toggle-image-palette">
+        <span id="title-image-palette">Paleta das Imagens (Arte)</span>
+        <span class="arrow">►</span>
+      </div>
       <div
-        id="eyedropper-result"
-        class="color-box"
-        style="
-          flex: 1;
-          margin: 0;
-          background-color: #444;
-          border: 1px dashed #777;
-        "
-      >
-        <span>Vazio</span>
+        id="image-palette-container"
+        class="palette-container collapsed"
+      ></div>
+
+      <!-- Image Gallery -->
+      <div id="gallery" class="gallery"></div>
+    </div>
+    <!-- End Scrollable Content Area -->
+
+    <!-- Fixed Footer Area -->
+    <div class="bottom-fixed">
+      <div id="pagination-controls" class="pagination-controls">
+        <button id="btn-prev">Anterior</button>
+        <span id="page-info">1/1</span>
+        <button id="btn-next">Próxima</button>
+      </div>
+      <div class="footer" id="footer-content">
+        ☕ Saved your time?
+        <a href="https://ko-fi.com/lucasmartins1991" target="_blank"
+          >Buy me a coffee!</a
+        >
       </div>
     </div>
 
-    <!-- Site Palette (UI/CSS) -->
-    <div class="section-title" id="toggle-site-palette">
-      <span id="title-site-palette">Paleta do Site (Design)</span>
-      <span class="arrow">▼</span>
-    </div>
-    <div id="site-palette-container" class="palette-container"></div>
-
-    <!-- Image Palette (Canvas) -->
-    <div class="section-title" id="toggle-image-palette">
-      <span id="title-image-palette">Paleta das Imagens (Arte)</span>
-      <span class="arrow">►</span>
-    </div>
-    <div id="image-palette-container" class="palette-container collapsed"></div>
-
-    <!-- Image Gallery & Pagination -->
-    <div id="gallery" class="gallery"></div>
-
-    <div id="pagination-controls" class="pagination-controls">
-      <button id="btn-prev">Anterior</button>
-      <span id="page-info">1/1</span>
-      <button id="btn-next">Próxima</button>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer" id="footer-content">
-      ☕ Saved your time?
-      <a href="https://ko-fi.com/lucasmartins1991" target="_blank"
-        >Buy me a coffee!</a
-      >
-    </div>
-
-    <!-- Scripts -->
     <script src="jszip.min.js"></script>
     <script src="popup.js"></script>
   </body>

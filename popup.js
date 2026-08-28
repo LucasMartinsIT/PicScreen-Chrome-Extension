@@ -50,7 +50,8 @@ document.getElementById("btn-extract").addEventListener("click", async () => {
   const limitInput = parseInt(document.getElementById("palette-limit").value);
   const maxColors = limitInput > 0 ? limitInput : 10;
 
-  btn.innerText = "Analisando... aguarde";
+  btn.innerText =
+    chrome.i18n.getMessage("msgAnalyzing") || "Analisando... aguarde";
   btn.disabled = true;
 
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -91,18 +92,20 @@ function renderizarCores(containerId, arrayDeCores) {
 
     colorBox.addEventListener("click", () => {
       navigator.clipboard.writeText(hex);
-      colorBox.querySelector("span").innerText = "Copiado!";
+      colorBox.querySelector("span").innerText =
+        chrome.i18n.getMessage("msgCopied") || "Copiado!";
       setTimeout(() => (colorBox.querySelector("span").innerText = hex), 1500);
     });
     container.appendChild(colorBox);
   });
 }
 
-// Render image references with layout stability pre-loading
+// Render image references with layout stability pre-loading and DocumentFragment
 async function renderGallery() {
   const gallery = document.getElementById("gallery");
-  gallery.innerHTML =
-    "<div style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px 0;'>Carregando referências... ⌛</div>";
+  const loadingText =
+    chrome.i18n.getMessage("msgLoading") || "Carregando referências... ⌛";
+  gallery.innerHTML = `<div style='grid-column: 1 / -1; text-align: center; color: #888; padding: 20px 0;'>${loadingText}</div>`;
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -122,6 +125,8 @@ async function renderGallery() {
 
   gallery.innerHTML = "";
 
+  const fragment = document.createDocumentFragment();
+
   imagesToShow.forEach((src) => {
     let wrapper = document.createElement("div");
     wrapper.className = "img-container";
@@ -132,7 +137,8 @@ async function renderGallery() {
     let btnDown = document.createElement("button");
     btnDown.className = "btn-single-down";
     btnDown.innerHTML = "📥";
-    btnDown.title = "Baixar esta imagem";
+    btnDown.title =
+      chrome.i18n.getMessage("msgDownloadSingle") || "Baixar esta imagem";
 
     // Individual image download handling via blob fetch
     btnDown.addEventListener("click", async () => {
@@ -160,8 +166,11 @@ async function renderGallery() {
 
     wrapper.appendChild(imgElement);
     wrapper.appendChild(btnDown);
-    gallery.appendChild(wrapper);
+
+    fragment.appendChild(wrapper);
   });
+
+  gallery.appendChild(fragment);
 
   updatePaginationControls();
 }
@@ -201,7 +210,8 @@ document.getElementById("btn-next").addEventListener("click", () => {
 // Batch download handler using JSZip
 document.getElementById("btn-download").addEventListener("click", async () => {
   const btnDownload = document.getElementById("btn-download");
-  btnDownload.innerText = "Empacotando... aguarde";
+  btnDownload.innerText =
+    chrome.i18n.getMessage("msgPackaging") || "Empacotando... aguarde";
   btnDownload.disabled = true;
 
   const zip = new JSZip();
@@ -236,7 +246,10 @@ document
   .getElementById("btn-eyedropper")
   .addEventListener("click", async () => {
     if (!window.EyeDropper) {
-      alert("Seu navegador não suporta a ferramenta de Conta-gotas nativa.");
+      alert(
+        chrome.i18n.getMessage("msgNoEyedropper") ||
+          "Seu navegador não suporta a ferramenta de Conta-gotas nativa.",
+      );
       return;
     }
 
@@ -254,9 +267,10 @@ document
       span.style.color = hex.toLowerCase() === "#ffffff" ? "#000" : "#fff";
 
       resultBox.onclick = () => {
-        if (span.innerText !== "Vazio" && span.innerText !== "Empty") {
+        const emptyText = chrome.i18n.getMessage("msgEmpty") || "Vazio";
+        if (span.innerText !== emptyText && span.innerText !== "Empty") {
           navigator.clipboard.writeText(hex);
-          span.innerText = "Copiado!";
+          span.innerText = chrome.i18n.getMessage("msgCopied") || "Copiado!";
           setTimeout(() => (span.innerText = hex), 1500);
         }
       };

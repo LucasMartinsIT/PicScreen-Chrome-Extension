@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "extract_data") {
     processPage(request.limit).then((results) => sendResponse(results));
-    return true;
+    return true; // Keeps the message channel open for async response
   }
 });
 
@@ -10,7 +10,7 @@ async function processPage(limit) {
   const colorMapImages = {};
   const validUrls = [];
 
-  // 1. Extração das Imagens
+  // Extract valid image sources
   imgs.forEach((img) => {
     if (img.width > 200 && img.height > 200) {
       validUrls.push(img.src);
@@ -23,26 +23,25 @@ async function processPage(limit) {
   );
   await Promise.all(colorPromises);
 
+  // Sort image palette by frequency
   const sortedImageColors = Object.keys(colorMapImages).sort(
     (a, b) => colorMapImages[b] - colorMapImages[a],
   );
 
-  // 2. 👉 NOVO: Extração das cores de UI do Site (CSS)
   const sitePalette = extractSiteUIColors(limit);
 
   return {
     images: uniqueUrls,
-    imagePalette: sortedImageColors.slice(0, limit), // Paleta de arte
-    sitePalette: sitePalette, // Paleta de design
+    imagePalette: sortedImageColors.slice(0, limit),
+    sitePalette: sitePalette,
   };
 }
 
-// 👉 NOVA FUNÇÃO: Vasculha o CSS do site para achar as cores estruturais
+// Scans computed CSS styles to build the site's structural UI palette
 function extractSiteUIColors(limit) {
   const elements = document.querySelectorAll("*");
   const siteColorMap = {};
 
-  // Função para pegar rgb(x,y,z) e transformar em HEX ignorando transparentes
   const processCssColor = (colorStr) => {
     if (
       !colorStr ||
@@ -51,11 +50,9 @@ function extractSiteUIColors(limit) {
     )
       return;
 
-    // Extrai apenas os números da string "rgb(255, 255, 255)"
     const rgba = colorStr.match(/\d+(\.\d+)?/g);
     if (rgba && rgba.length >= 3) {
-      // Ignora cores 100% invisíveis (alpha 0)
-      if (rgba[3] === "0") return;
+      if (rgba[3] === "0") return; // Ignore fully transparent elements
       const hex = rgbToHex(
         parseInt(rgba[0]),
         parseInt(rgba[1]),
@@ -68,16 +65,15 @@ function extractSiteUIColors(limit) {
   elements.forEach((el) => {
     const style = window.getComputedStyle(el);
     processCssColor(style.backgroundColor);
-    processCssColor(style.color); // Pega também a cor dos textos
+    processCssColor(style.color);
   });
 
-  // Ordena as cores estruturais mais usadas
   return Object.keys(siteColorMap)
     .sort((a, b) => siteColorMap[b] - siteColorMap[a])
     .slice(0, limit);
 }
 
-// Extração das Imagens (Canvas) - Permanece igual
+// Extracts dominant colors from images using Canvas API
 function extractColorsAsync(src, colorMap) {
   return new Promise((resolve) => {
     const img = new Image();
@@ -106,7 +102,6 @@ function extractColorsAsync(src, colorMap) {
 
           if (a >= 250) {
             const hex = rgbToHex(r, g, b);
-            // Ignoramos branco/preto apenas nas imagens, não no site
             if (hex !== "#ffffff" && hex !== "#000000") {
               colorMap[hex] = (colorMap[hex] || 0) + 1;
             }
