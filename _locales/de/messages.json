@@ -1,20 +1,24 @@
 {
-  "extName": { "message": "PicScreen - 参考与调色板提取器" },
-  "extDesc": { "message": "一键提取视觉参考和十六进制调色板。" },
-  "btnAnalyze": { "message": "分析页面" },
-  "btnDownload": { "message": "下载全部 .ZIP" },
-  "footerText": { "message": "☕ 为您节省了时间？ " },
-  "footerLink": { "message": "请我喝杯咖啡！" },
-  "labelColors": { "message": "颜色" },
-  "titleSitePalette": { "message": "网站调色板 (设计)" },
-  "titleImagePalette": { "message": "图片调色板 (艺术)" },
-  "titleEyedropper": { "message": "吸管 (特定颜色)" },
-  "btnEyedropper": { "message": "拾取颜色" },
-  "msgAnalyzing": { "message": "分析中... 请稍候" },
-  "msgLoading": { "message": "正在加载参考... ⌛" },
-  "msgPackaging": { "message": "正在打包... 请稍候" },
-  "msgCopied": { "message": "已复制！" },
-  "msgEmpty": { "message": "空" },
-  "msgDownloadSingle": { "message": "下载此图片" },
-  "msgNoEyedropper": { "message": "您的浏览器不支持原生吸管工具。" }
+  "extName": { "message": "PicScreen - Ref & Paletten Extraktor" },
+  "extDesc": {
+    "message": "Extrahieren Sie visuelle Referenzen und HEX-Paletten mit einem Klick."
+  },
+  "btnAnalyze": { "message": "Seite analysieren" },
+  "btnDownload": { "message": "Alles als .ZIP herunterladen" },
+  "footerText": { "message": "☕ Zeit gespart? " },
+  "footerLink": { "message": "Kauf mir einen Kaffee!" },
+  "labelColors": { "message": "Farben" },
+  "titleSitePalette": { "message": "Website-Palette (Design)" },
+  "titleImagePalette": { "message": "Bild-Palette (Kunst)" },
+  "titleEyedropper": { "message": "Pipette (Spezifische Farbe)" },
+  "btnEyedropper": { "message": "Farbe auswählen" },
+  "msgAnalyzing": { "message": "Analysiere... bitte warten" },
+  "msgLoading": { "message": "Referenzen werden geladen... ⌛" },
+  "msgPackaging": { "message": "Verpacke... bitte warten" },
+  "msgCopied": { "message": "Kopiert!" },
+  "msgEmpty": { "message": "Leer" },
+  "msgDownloadSingle": { "message": "Dieses Bild herunterladen" },
+  "msgNoEyedropper": {
+    "message": "Ihr Browser unterstützt das native Pipetten-Tool nicht."
+  }
 }
